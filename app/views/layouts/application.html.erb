@@ -7,7 +7,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_importmap_tags %>
+   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
  <header>
@@ -19,7 +19,7 @@
  <li>
   <%= link_to "ログアウト", destroy_admin_session_path, data: { turbo_method: :delete} %>
   <%= link_to "商品一覧画面", admin_items_path %>
-  <%= link_to "ジャンル一覧", admin_genre_index_path %>
+  <%= link_to "ジャンル一覧", admin_genres_path %>
  </li>
 <% else %>
  <li>
