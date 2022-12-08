@@ -1,0 +1,32 @@
+<h1>商品一覧画面</h1>
+<li>
+<%= link_to "新規登録",new_admin_item_path ,class: "btn btn-sm btn-success" %>
+</li>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+     <th></th>
+      <th>Name</th>
+       <th>Introduction</th>
+        <th>Price</th>
+        </tr>
+      </thead>
+    <tbody>
+  <% @items.each do |item| %>
+    <tr>
+      <td>
+        <%= image_tag item.get_image(100,100) %>
+        </td>
+        <td>
+          <%= item.name %>
+        </td>
+      <td>
+       <%= item.introduction %>
+      </td>
+    <td>
+     <p><%= item.price %>円</p>
+     </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

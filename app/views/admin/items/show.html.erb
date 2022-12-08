@@ -1,0 +1,19 @@
+<h2>商品詳細画面</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <%= image_tag @item.get_image(100,100) %>
+        </td>
+         <td>
+         <%= @item.name %>
+        </td>
+       <td>
+      <%= @item.introduction %>
+    </td>
+  <td>
+<a><%= @item.price %>円</a>
+<td>
+</tr>
+</tbody>
+</table>
