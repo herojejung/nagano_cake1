@@ -19,7 +19,7 @@ end
 def update
   @genre = Genre.find(params[:id])
 if @genre.update(genre_params)
-  redirect_to admin_genre_index_path
+  redirect_to admin_genres_path
 end
 end
 

@@ -1,2 +1,12 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h1>商品編集</h1>
+
+<%= form_with model: @book do |f| %>
+  <label for="inputImage">商品画像</label>
+  <p><%= f.text_field :image, autofocus: true, id:"inputImage", placeholder:"Image"%></p>
+  <label for="inputTitle">商品画像</label>
+    <p><%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"Title"%></p>
+      <label for="inputOpinion">Opinion</label>
+        <p><%= f.text_area :body, autofocus: true, id:"inputOpinion", placeholder:"Opinion"%></p>
+        <%= f.submit 'Update Book', class: "btn btn-success" %>
+      <p><%= link_to "Show",book_path %>|<%= link_to "Back",books_path %></p>
+    <% end %>
