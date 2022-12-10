@@ -5,26 +5,31 @@
 <table class="table table-hover table-inverse">
   <thead>
     <tr>
-     <th></th>
-      <th>Name</th>
-       <th>Introduction</th>
-        <th>Price</th>
+     <th>商品ID</th>
+      <th>商品名</th>
+       <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
         </tr>
       </thead>
     <tbody>
  <% @items.each do |item| %>
 　<tr>
-        <td>
-        　　<%= link_to admin_item_path(item) do %>
-          　　<%= item.name %>
-          　　<% end %>
-        　　　</td>
+    <td>
+    　<td>
+    　  <%= item.id %>
+    　    </td>
+    　      <td>
+            <%= link_to admin_item_path(item) do %>
+             <%= item.name %>
+             <% end %>
+        　     </td>
               <td>
-             <%= item.introduction %>
+              <%= item.price %>
             </td>
-            <td>
-          <p><%= item.price %>円</p>
+           <td>
         </td>
+        <td></td>
       </tr>
     <% end %>
 </tbody>
