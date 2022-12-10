@@ -23,12 +23,19 @@ def show
 end
 
 def edit
+  @item = Item.find(params[:id])
 end
 
+def update
+  @item = Item.find(params[:id])
+if @item.update(item_params)
+  redirect_to admin_item_path
+end
 end
 
 private
   # ストロングパラメータ
 def item_params
   params.require(:item).permit(:name, :introduction, :price, :image, :genre_id)
+end
 end

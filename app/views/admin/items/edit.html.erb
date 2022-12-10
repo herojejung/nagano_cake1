@@ -1,12 +1,17 @@
 <h1>商品編集</h1>
 
-<%= form_with model: @book do |f| %>
-  <label for="inputImage">商品画像</label>
-  <p><%= f.text_field :image, autofocus: true, id:"inputImage", placeholder:"Image"%></p>
-  <label for="inputTitle">商品画像</label>
-    <p><%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"Title"%></p>
-      <label for="inputOpinion">Opinion</label>
-        <p><%= f.text_area :body, autofocus: true, id:"inputOpinion", placeholder:"Opinion"%></p>
-        <%= f.submit 'Update Book', class: "btn btn-success" %>
-      <p><%= link_to "Show",book_path %>|<%= link_to "Back",books_path %></p>
-    <% end %>
+<%= form_with model: @item, url: admin_item_path do |f| %>
+  <label for="Image">商品画像</label>
+    <p><%= f.file_field :image, placeholder: "Image",accept: "image/*" %></p>
+      <label for="inputName">商品名</label>
+        <p><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%></p>
+          <label for="inputIntroduction">商品説明</label>
+            <p><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"Inputintroduction"%></p>
+        <label for="inputGenrre">ジャンル</label>
+      <p><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></p>
+    <label for="inputPrice">税抜価格</label>
+  <p><%= f.text_area :price, autofocus: true, id:"inputPrice", placeholder:"InputPrice"%>円</p>
+<p>
+<%= f.submit '変更を保存', class: "btn btn-secondary" %>
+</p>
+<% end %>

@@ -12,21 +12,20 @@
         </tr>
       </thead>
     <tbody>
-  <% @items.each do |item| %>
-    <tr>
-      <td>
-        <%= image_tag item.get_image(100,100) %>
-        </td>
+ <% @items.each do |item| %>
+　<tr>
         <td>
-          <%= item.name %>
+        　　<%= link_to admin_item_path(item) do %>
+          　　<%= item.name %>
+          　　<% end %>
+        　　　</td>
+              <td>
+             <%= item.introduction %>
+            </td>
+            <td>
+          <p><%= item.price %>円</p>
         </td>
-      <td>
-       <%= item.introduction %>
-      </td>
-    <td>
-     <p><%= item.price %>円</p>
-     </td>
-    </tr>
-  <% end %>
+      </tr>
+    <% end %>
 </tbody>
 </table>
