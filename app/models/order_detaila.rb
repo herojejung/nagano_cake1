@@ -1,0 +1,2 @@
+class OrderDetaila < ApplicationRecord
+end
