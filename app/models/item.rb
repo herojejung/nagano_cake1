@@ -2,6 +2,14 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_one_attached :image
 
+  def show_status
+    if is_active
+      return "販売中"
+    else
+      return "販売停止中"
+    end
+  end
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

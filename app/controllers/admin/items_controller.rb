@@ -16,6 +16,7 @@ end
 
 def index
   @items = Item.all
+  
 end
 
 def show
@@ -36,6 +37,6 @@ end
 private
   # ストロングパラメータ
 def item_params
-  params.require(:item).permit(:id, :name, :introduction, :price, :image, :genre_id, :genre_name)
+  params.require(:item).permit(:id, :name, :introduction, :price, :image, :genre_id, :is_active)
 end
 end

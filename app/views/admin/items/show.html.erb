@@ -1,5 +1,15 @@
 <h2>商品詳細画面</h2>
   <table class="table">
+    <thead>
+    <tr>
+    <th></th>
+     <th>商品名</th>
+      <th>商品説明</th>
+       <th>ジャンル</th>
+        <th>税込価格(税抜価格)</th>
+        <th>販売ステータス</th>
+        </tr>
+      </thead>
     <tbody>
       <tr>
         <td>
@@ -7,16 +17,21 @@
         </td>
          <td>
          <%= @item.name %>
-
         </td>
        <td>
       <%= @item.introduction %>
     </td>
+    <td>
+    <%= @item.genre.name %>
+    </td>
   <td>
 <a><%= @item.price %>円</a>
 </td>
+<td>
+<%= @item.show_status %>
+</td>
 <li>
-  <%= link_to "編集する", edit_admin_item_path%>
+  <%= link_to "編集する", edit_admin_item_path %>
 </li>
 </tr>
 </tbody>

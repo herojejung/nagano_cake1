@@ -15,12 +15,11 @@
     <tbody>
  <% @items.each do |item| %>
 　<tr>
-    <td>
     　<td>
     　  <%= item.id %>
     　    </td>
-    　      <td>
-            <%= link_to admin_item_path(item) do %>
+    　     <td>
+    　      <%= link_to admin_item_path(item) do %>
              <%= item.name %>
              <% end %>
         　     </td>
@@ -28,8 +27,11 @@
               <%= item.price %>
             </td>
            <td>
+            <%= item.genre.name %>
         </td>
-        <td></td>
+        <td>
+        <%= item.show_status %>
+        </td>
       </tr>
     <% end %>
 </tbody>

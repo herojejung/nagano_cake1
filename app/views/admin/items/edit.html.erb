@@ -7,10 +7,14 @@
         <p><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%></p>
           <label for="inputIntroduction">商品説明</label>
             <p><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"Inputintroduction"%></p>
-        <label for="inputGenrre">ジャンル</label>
-      <p><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></p>
-    <label for="inputPrice">税抜価格</label>
-  <p><%= f.text_area :price, autofocus: true, id:"inputPrice", placeholder:"InputPrice"%>円</p>
+              <label for="inputGenrre">ジャンル</label>
+              <p><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></p>
+            <label for="inputPrice">税抜価格</label>
+          <p><%= f.text_area :price, autofocus: true, id:"inputPrice", placeholder:"InputPrice"%>円</p>
+        <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active_is_order, "販売中" %>
+    <%= f.radio_button :is_active,  false %>
+  <%= f.label :is_active_is_order, "販売停止中" %>
 <p>
 <%= f.submit '変更を保存', class: "btn btn-secondary" %>
 </p>
