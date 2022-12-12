@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "home/about" => "homes#about", as: "about"
   end
-  
+
   namespace :public do
     resources :orders, only:[:new,:confirm,:complete,:index,:show,:create]
   end
@@ -55,7 +55,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customer, only:[:index,:update,:edit,:update]
   end
-
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
