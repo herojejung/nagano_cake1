@@ -1,12 +1,35 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
+  namespace :public do
+    root to: "homes#top"
+    get "home/about" => "homes#about", as: "about"
+  end
+  
+  namespace :public do
+    resources :orders, only:[:new,:confirm,:complete,:index,:show,:create]
+  end
+
+  namespace :public do
+    resources :customers, only:[:index,:create,:destroy,:destroy_all,:update]
+  end
+
+  namespace :public do
+    resources :customers, only:[:edit,:show,:unsubscribe,:withdrawal,:update]
+  end
+
+  namespace :public do
+    resources :items, only:[:index,:show]
+  end
+
+  namespace :public do
+    resources :addreses, only:[:create,:index,:edit,:destroy,:update]
+  end
+
+
 
   devise_for :admin, skip: [:registrations,:passwords] , controllers: {
   sessions: "admin/sessions"
@@ -25,8 +48,15 @@ Rails.application.routes.draw do
     resources :genres, only:[:create,:index,:edit,:update]
   end
 
-  root to: "homes#top"
-  get "home/about" => "homes#about", as: "about"
+  namespace :admin do
+    resources :orders, only:[:show,:update]
+  end
+
+  namespace :admin do
+    resources :customer, only:[:index,:update,:edit,:update]
+  end
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
