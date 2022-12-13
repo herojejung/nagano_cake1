@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :public do
     root to: "homes#top"
     get "home/about" => "homes#about", as: "about"
+    get "destroy_customer_session" => "customers#sign_out"
   end
 
   namespace :public do
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    resources :customers, only:[:index,:create,:destroy,:destroy_all,:update]
+    resources :cart_items, only:[:index,:create,:destroy,:destroy_all,:update]
   end
 
   namespace :public do
