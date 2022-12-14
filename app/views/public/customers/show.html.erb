@@ -2,37 +2,31 @@
   <table class="table">
     <h1>登録情報</h1>
     <li><%= link_to "編集", edit_public_customers_path %></li>
-    <thead>
+    <tbody>
     <tr>
-    <th></th>
      <th>氏名</th>
+     <th><%= @customer.last_name %><%=@customer.first_name%></th>
+     </tr>
+     <tr>
       <th>カナ</th>
+      <th><%= @customer.last_name_kana %><%=@customer.first_name_kana%></th>
+      </tr>
+      <tr>
        <th>郵便番号</th>
+       <th><%= @customer.postal_code %></th>
+       </tr>
+       <tr>
         <th>住所</th>
+        <th><%= @customer.adresses %></th>
+        </tr>
+        <tr>
         <th>電話番号</th>
+        <th><%= @customer.telephone_number %></th>
+        </tr>
+        <tr>
         <th>メールアドレス</th>
+        <th><%= @customer.email %></th>
         </tr>
       </thead>
-    <tbody>
-      <tr>
-        <td>
-          <%= @customer.last_name %><%=@customer.first_name%>
-        </td>
-         <td>
-         <%= @customer.last_name_kana %><%=@customer.first_name_kana%>
-        </td>
-       <td>
-      <%= @customer.postal_code %>
-    </td>
-    <td>
-    <%= @customer.adresses %>
-    </td>
-  <td>
-<%= @customer.telephone_number %>
-</td>
-<td>
-<%= @customer.email %>
-</td>
-</tr>
-</tbody>
+    </tbody>
 </table>
