@@ -4,6 +4,17 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+  devise_for :admin, skip: [:registrations,:passwords] , controllers: {
+  sessions: "admin/sessions"
+}
+
+  root to: "homes#top"
+
+  namespace :admin do
+    root to: 'homes#top'
+    get "destroy/admin/session" => "admin#sign_out"
+  end
+
   namespace :public do
     root to: "homes#top"
     get "home/about" => "homes#about", as: "about"
@@ -28,17 +39,6 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :addreses, only:[:create,:index,:edit,:destroy,:update]
-  end
-
-
-
-  devise_for :admin, skip: [:registrations,:passwords] , controllers: {
-  sessions: "admin/sessions"
-}
-
-  namespace :admin do
-    root to: 'homes#top'
-    get "destroy/admin/session" => "admin#sign_out"
   end
 
   namespace :admin do
