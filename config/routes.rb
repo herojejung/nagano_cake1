@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    resources :customers, only:[:edit,:show,:unsubscribe,:withdrawal,:update]
+    resource :customers, only:[:edit,:show,:unsubscribe,:withdrawal,:update]
   end
 
   namespace :public do
