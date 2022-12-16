@@ -4,9 +4,14 @@
   <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <p>名前<%= f.label :名前,"(姓)" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    名前<%= f.label :名前,"(姓)" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
     <%= f.label :名前,"(名)" %><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-    </p>
+  </div>
+  <br/>
+
+  <div class="field">
+    フリガナ<%= f.label :名前,"(セイ)" %><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+    <%= f.label :名前,"(メイ)" %><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
   </div>
   <br/>
 
@@ -17,9 +22,8 @@
   <br/>
 
     <div class="field">
-    <p><%= f.label :郵便番号 %>(ハイフンなし）
+    <%= f.label :郵便番号 %>(ハイフンなし）
     <%= f.text_field :postal_code, autofocus: true, autocomplete: ":postal_code" %>
-    </p>
   </div>
   <br/>
 
@@ -45,9 +49,8 @@
   <br/>
 
   <div class="field">
-    <p><%= f.label :パスワード %>(確認用)
+    <%= f.label :パスワード %>(確認用)
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </p>
   </div>
 
   <div class="actions">
@@ -55,6 +58,6 @@
   </div>
 <% end %>
 
-<h2>既に登録済みの方へ</h2>
+<h2>既に登録済みの方</h2>
 <p>既に登録済みの方は<%= link_to "こちらへ", new_customer_session_path %></p>
 

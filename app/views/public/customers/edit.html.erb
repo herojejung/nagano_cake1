@@ -1,2 +1,8 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<%= form_with model: @book do |f| %>
+  <label for="inputTitle">Title</label>
+    <p><%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"Title"%></p>
+      <label for="inputOpinion">Opinion</label>
+        <p><%= f.text_area :body, autofocus: true, id:"inputOpinion", placeholder:"Opinion"%></p>
+        <%= f.submit 'Update Book', class: "btn btn-success" %>
+      <p><%= link_to "Show",book_path %>|<%= link_to "Back",books_path %></p>
+    <% end %>
