@@ -31,8 +31,8 @@ Rails.application.routes.draw do
 
   namespace :public do
     resource :customers, only:[:edit,:show,:update]
-    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   end
 
   namespace :public do

@@ -15,11 +15,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find_by(email: params[:customer][:email])
   end
 
   def withdrawal
-    @customer = Customer.find_by(email: params[:customer][:email])
+    @customer = (current_customer)
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)
     reset_session

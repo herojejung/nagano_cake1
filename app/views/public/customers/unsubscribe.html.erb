@@ -4,5 +4,5 @@
    これまでの購入履歴が閲覧できなくなります。<br>
    退会する場合は、「退会する」をクリックしてください。
  </p>
-  <%= link_to "退会しない", public_customers_path(current_user) %>
-  <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
+  <%= link_to "退会しない", public_customers_path %>
+  <%= link_to "退会する", public_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
