@@ -1,8 +1,30 @@
-<%= form_with model: @book do |f| %>
-  <label for="inputTitle">Title</label>
-    <p><%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"Title"%></p>
-      <label for="inputOpinion">Opinion</label>
-        <p><%= f.text_area :body, autofocus: true, id:"inputOpinion", placeholder:"Opinion"%></p>
-        <%= f.submit 'Update Book', class: "btn btn-success" %>
-      <p><%= link_to "Show",book_path %>|<%= link_to "Back",books_path %></p>
+<h1>会員情報編集</h1>
+<%= form_with model: @customer, url: public_customers_path do |f| %>
+  <label for="inputName">氏名</label>
+    <p>
+      <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"Name"%>
+      <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"Name"%>
+    </p>
+  <label for="inputName_Kana">フリガナ</label>
+    <p>
+      <%= f.text_field :last_name_kana, autofocus: true, id:"inputName_kana", placeholder:"Kana"%>
+      <%= f.text_field :first_name_kana, autofocus: true, id:"inputName_kana", placeholder:"Kana"%>
+    </p>
+  <label for="inputPostal_Code">郵便番号</label>
+    <p>
+      <%= f.text_field :postal_code, autofocus: true, id:"inputPostal_Code", placeholder:"postal_code"%>
+    </p>
+  <label for="inputAddreses">住所</label>
+    <p>
+      <%= f.text_area :addreses, autofocus: true, id:"inputAddreses", placeholder:"addreses"%>
+    </p>
+  <label for="inputTelephone_number">電話番号</label>
+    <p>
+      <%= f.text_field :telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"telephone_number"%>
+    </p>
+    <label for="inputEmail">メールアドレス</label>
+    <p>
+      <%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"email"%>
+    </p>
+        <%= f.submit '編集内容を保存', class: "btn btn-success" %>
     <% end %>

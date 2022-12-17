@@ -4,7 +4,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
+  end
+
+  def update
+    @customer = current_customer
+  if @customer.update(customer_params)
+    redirect_to public_customers_path
+  end
   end
 
   def unsubscribe
