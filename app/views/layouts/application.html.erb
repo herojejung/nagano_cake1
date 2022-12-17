@@ -15,6 +15,9 @@
  <li>
   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
  </li>
+  <li>
+  <%= link_to "マイページ", public_customers_path %>
+ </li>
 <% elsif admin_signed_in? %>
  <li>
   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
