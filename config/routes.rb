@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    resources :addreses, only:[:create,:index,:edit,:destroy,:update]
+    resources :addresses, only:[:create,:index,:edit,:destroy,:update]
   end
 
   namespace :admin do
