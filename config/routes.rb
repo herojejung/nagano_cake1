@@ -35,10 +35,10 @@ Rails.application.routes.draw do
     patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   end
 
-  namespace :public do
-    resources :items, only:[:index,:show]
+  scope module: :public do
+    resources :items, only: %i[index show]
   end
-
+  
   namespace :public do
     resources :addresses, only:[:create,:index,:edit,:destroy,:update]
   end

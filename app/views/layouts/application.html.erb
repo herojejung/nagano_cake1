@@ -18,6 +18,9 @@
   <li>
   <%= link_to "マイページ", public_customers_path %>
  </li>
+  <li>
+  <%= link_to "商品一覧",items_path %>
+ </li>
 <% elsif admin_signed_in? %>
  <li>
   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>

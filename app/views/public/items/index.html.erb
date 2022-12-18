@@ -1,2 +1,21 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<h1>商品一覧（全<%= current_customer.@items.where('created_at > ?').count %>件)</h1>
+
+<table class="table table-hover table-inverse">
+<tbody>
+ <% @items.each do |item| %>
+　<tr>
+    　<td>
+    　  <%= item.id %>
+    　    </td>
+    　     <td>
+    　      <%= link_to admin_item_path(item) do %>
+             <%= item.name %>
+             <% end %>
+        　     </td>
+              <td>
+              <%= item.price %>
+            </td>
+      </tr>
+    <% end %>
+</tbody>
+</table>
