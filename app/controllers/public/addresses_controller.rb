@@ -1,8 +1,8 @@
-class Public::AddresesController < ApplicationController
+class Public::AddressesController < ApplicationController
   def create
-    @adress = Address.new(adress_params)
+    @address = Address.new(address_params)
   #binding.pry
-  if @adress.save
+  if @address.save
     redirect_to public_addresses_path
   end
   end
@@ -27,7 +27,7 @@ class Public::AddresesController < ApplicationController
 
   private
   # ストロングパラメータ
-def item_params
-  params.require(:adress).permit(:id, :customer_id, :name, :postal_code, :addresses, :genre_id, :is_active)
+def address_params
+  params.require(:address).permit(:id, :customer_id, :name, :postal_code, :address, :genre_id, :is_active)
 end
 end
