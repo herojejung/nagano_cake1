@@ -1,2 +1,22 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<table class="table">
+    <thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= image_tag @item.get_image(100,100) %>
+        </td>
+         <td>
+         <%= @item.name %>
+        </td>
+       <td>
+      <%= @item.introduction %>
+    </td>
+  <td>
+<a>¥<%= @item.price %>(税込)</a>
+</td>
+</tr>
+</tbody>
+</table>
+<li>
+  <%= link_to "カートに入れる", cart_items_path %>
+</li>

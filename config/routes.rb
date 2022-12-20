@@ -25,8 +25,9 @@ Rails.application.routes.draw do
     resources :orders, only:[:new,:confirm,:complete,:index,:show,:create]
   end
 
-  namespace :public do
-    resources :cart_items, only:[:index,:create,:destroy,:destroy_all,:update]
+  scope module: :public do
+    resources :cart_items, only: %i[index create destroy update]
+    get '/cart_items/destroy_all' => "cart_items#destroy_all", as: 'destroy_all'
   end
 
   namespace :public do
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :items, only: %i[index show]
   end
-  
+
   namespace :public do
     resources :addresses, only:[:create,:index,:edit,:destroy,:update]
   end

@@ -1,19 +1,19 @@
-<h1>商品一覧（全<%= current_customer.@items.where('created_at > ?').count %>件)</h1>
+<h1>商品一覧（全<%= @items.where('created_at > id').count %>件)</h1>
 
 <table class="table table-hover table-inverse">
 <tbody>
  <% @items.each do |item| %>
 　<tr>
     　<td>
-    　  <%= item.id %>
+      <%= link_to item_path(item) do %>
+        <%= image_tag item.get_image(100,100) %>
+        <% end %>
     　    </td>
     　     <td>
-    　      <%= link_to admin_item_path(item) do %>
              <%= item.name %>
-             <% end %>
         　     </td>
               <td>
-              <%= item.price %>
+              <a>¥<%= item.price %></a>
             </td>
       </tr>
     <% end %>
