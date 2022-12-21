@@ -12,7 +12,7 @@ class Public::ItemsController < ApplicationController
 private
   # ストロングパラメータ
 def item_params
-    params.require(:genre).permit(:name,:genre_id,:introduction,:price,:is_active,:image)
+    params.require(:item).permit(:name,:genre_id,:introduction,:price,:is_active,:image)
 end
 
 end
