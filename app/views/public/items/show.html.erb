@@ -10,13 +10,15 @@
         </td>
        <td>
       <%= @item.introduction %>
-    </td>
+    </td>    
   <td>
 <a>¥<%= @item.price %>(税込)</a>
 </td>
 </tr>
 </tbody>
 </table>
-<li>
+
+<%= form_with model: @item, url: admin_items_path do |f| %>
+ <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
   <%= link_to "カートに入れる", cart_items_path %>
 </li>
