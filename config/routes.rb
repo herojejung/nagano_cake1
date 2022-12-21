@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :items, only: %i[index show]
+    resources :items, only: %i[index show create]
   end
 
   namespace :public do

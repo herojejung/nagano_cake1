@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :genre
   has_one_attached :image
+  belongs_to :cart_items
 
   def show_status
     if is_active
@@ -9,7 +10,7 @@ class Item < ApplicationRecord
       return "販売停止中"
     end
   end
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

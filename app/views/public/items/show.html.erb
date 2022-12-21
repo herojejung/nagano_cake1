@@ -10,7 +10,7 @@
         </td>
        <td>
       <%= @item.introduction %>
-    </td>    
+    </td>
   <td>
 <a>¥<%= @item.price %>(税込)</a>
 </td>
@@ -18,7 +18,7 @@
 </tbody>
 </table>
 
-<%= form_with model: @item, url: admin_items_path do |f| %>
- <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
-  <%= link_to "カートに入れる", cart_items_path %>
-</li>
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+<%= f.select :amount, ['1', '2', '3','4','5'], {include_blank: '個数を選択'}, class: 'sample' %>
+   <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+  <% end %>
