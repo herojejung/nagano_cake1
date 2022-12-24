@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :customer, only:[:index,:update,:edit,:update]
+    resources :customer, only:[:index,:show,:edit,:update]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
