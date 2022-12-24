@@ -7,9 +7,9 @@ class Customer < ApplicationRecord
          
   def index_status
     if is_deleted
-      return "有効"
-    else
       return "退会"
+    else
+      return "有効"
     end
   end
 end
