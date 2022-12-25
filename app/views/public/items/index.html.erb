@@ -2,6 +2,16 @@
 
 <table class="table table-hover table-inverse">
 <tbody>
+  <a>ジャンル検索</a>
+  <% @genres.each do |genre| %>
+    <tr>
+      <% if genre_id = true %>
+      <td>
+        <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
+      </td>                    <%# products_pathに引数としてcategory_idを渡す %>
+      <% end %>
+    </tr>
+    <% end %>
  <% @items.each do |item| %>
 　<tr>
     　<td>
