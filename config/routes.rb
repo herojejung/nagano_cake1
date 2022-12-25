@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     get "destroy_customer_session" => "customers#sign_out"
   end
 
-  namespace :public do
-    resources :orders, only:[:new,:confirm,:complete,:index,:show,:create]
+  scope module: :public do
+    resources :orders, only: %i[new confirm complete index show create]
   end
 
   scope module: :public do

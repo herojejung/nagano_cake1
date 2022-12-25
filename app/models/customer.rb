@@ -3,8 +3,10 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
-         
+
+  has_many :cart_items
+
+
   def index_status
     if is_deleted
       return "退会"
