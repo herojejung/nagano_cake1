@@ -12,12 +12,12 @@
 <body>
  <header>
 <% if customer_signed_in? %>
-<p>ようこそ、<%= current_customer.first_name %>さん!
+<li>ようこそ、<%= current_customer.first_name %>さん!
   <%= link_to "マイページ", public_customers_path %>
   <%= link_to "商品一覧",items_path %>
   <%= link_to "カート",cart_items_path %>
   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
- </p>
+ </li>
 <% elsif admin_signed_in? %>
  <li>
   <%= link_to "商品一覧", admin_items_path %>

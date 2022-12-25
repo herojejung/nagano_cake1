@@ -1,4 +1,9 @@
-<h1>商品一覧（全<%= @items.where('created_at > id').count %>件)</h1>
+<h2>
+  商品一覧（全<%= @items.where('created_at > id').count %>件)
+  <% if genre_id = true %>
+  <%= @genres.name%>一覧（全<%= @items.where('created_at > id').count %>件)
+  <% end %>
+</h2>
 
 <table class="table table-hover table-inverse">
 <tbody>
@@ -13,18 +18,18 @@
     </tr>
     <% end %>
  <% @items.each do |item| %>
-　<tr>
-    　<td>
-      <%= link_to item_path(item) do %>
-        <%= image_tag item.get_image(100,100) %>
-        <% end %>
-    　    </td>
-    　     <td>
-             <%= item.name %>
-        　     </td>
-              <td>
-              <a>¥<%= item.price %></a>
-            </td>
+<tr>
+    <td>
+    <%= link_to item_path(item) do %>
+      <%= image_tag item.get_image(100,100) %>
+      <% end %>
+    </td>
+    <td>
+      <%= item.name %>
+      </td>
+      <td>
+      <a>¥<%= item.price %></a>
+      </td>
       </tr>
     <% end %>
 </tbody>
