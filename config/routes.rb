@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :cart_items, only: %i[index create destroy update]
-    get '/cart_items/destroy_all' => "cart_items#destroy_all", as: 'destroy_all'
+    delete '/cart_items/destroy_all' => "cart_items#destroy_all", as: 'destroy_all'
   end
 
   namespace :public do

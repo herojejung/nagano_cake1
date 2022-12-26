@@ -4,8 +4,6 @@ def create
   @cart_item.customer_id = current_customer.id
 if @cart_item.save
   redirect_to cart_items_path
-else
-  render:new
 end
 end
 
@@ -21,9 +19,21 @@ if @cart_item.update(cart_item_params)
 end
 end
 
+def destroy
+  @cart_item = current_customer.cart_items
+if @cart_item.destroy(cart_item_params)
+  redirect_to cart_items_path
+end
+end
+
+def destroy_all
+    CartItem.destroy_all
+    redirect_to cart_items_path
+end
+
 private
 
 def cart_item_params
-    params.require(:cart_item).permit(:item_id,:amount,:customer_id)
+  params.require(:cart_item).permit(:item_id, :amount, :customer_id)
 end
 end
