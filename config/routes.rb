@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :orders, only: %i[new confirm complete index show create]
+    resources :orders, only: %i[new index show create] 
+    post '/orders/confirm' => 'orders#confirm', as: 'confirm'
+    get '/orders/complete' => 'orders#complete', as: 'complete'
   end
 
   scope module: :public do
