@@ -1,7 +1,8 @@
 <h2>
+  <% if @genre.present? == true %>
+  <%= @genre.name%>一覧（全<%= @items.where('created_at > id').count %>件)
+  <% else %>
   商品一覧（全<%= @items.where('created_at > id').count %>件)
-  <% if genre_id = true %>
-  <%= @genres.name%>一覧（全<%= @items.where('created_at > id').count %>件)
   <% end %>
 </h2>
 
