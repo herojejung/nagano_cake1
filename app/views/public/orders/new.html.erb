@@ -1,6 +1,9 @@
 <h2>注文情報入力画面</h2>
 
-<%= form_with model: @order, url: orders_path do |f| %>
+
+<%= form_with model: @order, url: confirm_path do |f| %>
+
+<table>
 <h3>支払い方法</h3>
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) , {:checked => true} %>
 <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
@@ -14,6 +17,7 @@
 </br>
 〒<%= current_customer.postal_code%>
 <%= current_customer.address%>
+<%= current_customer.last_name%>
 </br>
 </br>
 
@@ -36,9 +40,10 @@
 </br>
 </br>
 <label for="inputName">宛名</label>
-<%= f.text_field :delivery_name, autofocus: true, id:"inputName", placeholder:"Name"%>
+<%= f.text_field :delivery_name, autofocus: true, id:"inputName", placeholder:"名前"%>
 <br/>
 </br>
 
 <%= f.submit '確認画面へ進む', class: "btn btn-success" %>
+</table>
 <% end %>

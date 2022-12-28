@@ -12,6 +12,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @cart_item = current_customer.cart_items
+    @order = Order.new(order_params)
+    @order.delivery_address  = current_customer.address
+    @order.delivery_name  = current_customer.last_name
+    @order.delivery_postal_code  = current_customer.postal_code
+    byebug
   end
 
   def complete
