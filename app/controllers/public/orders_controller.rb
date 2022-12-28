@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @cart_item = current_customer.cart_items
     @order = Order.new(order_params)
+    @order.select_address = params[:order][:select_address]
   if params [:order][:select_address] == "0"
     @order.delivery_address  = current_customer.address
     @order.delivery_name  = current_customer.first_name+current_customer.last_name
