@@ -1,6 +1,16 @@
 <table class="table">
     <thead>
     <tbody>
+    <a>ジャンル検索</a>
+      <% @genres.each do |genre| %>
+    <tr>
+      <% if genre_id = true %>
+      <td>
+        <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
+      </td>                    <%# products_pathに引数としてcategory_idを渡す %>
+      <% end %>
+    </tr>
+    <% end %>
       <tr>
         <td>
           <%= image_tag @item.get_image(100,100) %>
