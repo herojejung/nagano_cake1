@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-  root to: "homes#top"
+  root to: "public/homes#top"
 
   namespace :admin do
     root to: 'homes#top'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :orders, only: %i[new index show create] 
+    resources :orders, only: %i[new index show create]
     post '/orders/confirm' => 'orders#confirm', as: 'confirm'
     get '/orders/complete' => 'orders#complete', as: 'complete'
   end
@@ -62,6 +62,9 @@ Rails.application.routes.draw do
     resources :customer, only:[:index,:show,:edit,:update]
   end
 
+  namespace :admin do
+    resources :order_details, only:[:update]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -3,5 +3,37 @@
     <p>このサイトは、ケーキ販売のECサイトになります。</p>
     <p>会員でない方も商品の閲覧はできますが、</p>
     <p>購入には会員登録が必要です。</p>
+<table class="table">
+<thead>
+  <tbody>
+   <a>ジャンル検索</a>
+    <% @genres.each do |genre| %>
+     <tr>
+      <% if genre_id = true %>
+       <td>
+        <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
+      </td>                    <%# products_pathに引数としてcategory_idを渡す %>
+     <% end %>
+    </tr>
+  <% end %>
+ <h2>新着商品</h2>
+ <% @items.each do |item| %>
+　<tr>
+　　<td>
+    　<%= image_tag.item.get_image(100,100) %>
+    </td>
+    <td>
+    <%= item.name %>
+    </td>
+     <td>
+    <a>¥<%= item.price %></a>
+</td>
+</tr>
+<% end %>
+ </tbody>
+</thead>
+</table>
 </main>
+
+
 
