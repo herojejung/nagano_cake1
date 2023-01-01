@@ -1,8 +1,3 @@
-<main>
-    <p>ようこそ、ながのCAKEへ！</p>
-    <p>このサイトは、ケーキ販売のECサイトになります。</p>
-    <p>会員でない方も商品の閲覧はできますが、</p>
-    <p>購入には会員登録が必要です。</p>
 <table class="table">
 <thead>
   <tbody>
@@ -16,24 +11,35 @@
      <% end %>
     </tr>
   <% end %>
- <h2>新着商品</h2>
- <% @items.each do |item| %>
-　<tr>
-　　<td>
-    　<%= image_tag.item.get_image(100,100) %>
-    </td>
-    <td>
-    <%= item.name %>
-    </td>
-     <td>
-    <a>¥<%= item.price %></a>
-</td>
-</tr>
-<% end %>
  </tbody>
 </thead>
 </table>
+<main>
+    <p>ようこそ、ながのCAKEへ！</p>
+    <p>このサイトは、ケーキ販売のECサイトになります。</p>
+    <p>会員でない方も商品の閲覧はできますが、</p>
+    <p>購入には会員登録が必要です。</p>
 </main>
 
-
+<h2>新着商品</h2>
+ <% @items.each do |item| %>
+ <table>
+<tbody>
+<tr>
+ <td>
+ <%= link_to item_path(item) do %>
+  <%= image_tag item.get_image(100,100) %>
+  <% end %>
+  </td>
+  <td>
+    <%= item.name %>
+     </td>
+     <td>
+     <a>¥<%= item.price %></a>
+      </td>
+      </tr>
+    <% end %>
+</tbody>
+</table>
+<%= link_to "全ての商品を見る>", items_path %>
 
