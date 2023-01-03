@@ -1,4 +1,7 @@
-<table class="table">
+<main>
+  <div class ="container">
+    <div class ="row">
+      <div class ="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
 <thead>
   <tbody>
    <a>ジャンル検索</a>
@@ -13,19 +16,16 @@
   <% end %>
  </tbody>
 </thead>
-</table>
-<main>
  <div class="card" style="max-width: 400px;">
-   <a class="card-img"><%= image_tag('25310211_s.jpg', :size =>'400x175') %></a>
+   <a class="card-img"><%= image_tag('25310211_s.jpg', :size =>'405x175') %></a>
   <div class="card-img-overlay">
-    <p class="text-black">ようこそ、ながのCAKEへ！</br>
+    <p class="text-white">ようこそ、ながのCAKEへ！</br>
     このサイトは、ケーキ販売のECサイトになります。</br>
     会員でない方も商品の閲覧はできますが、</br>
     購入には会員登録が必要です。
   </div>
 </div>
-</main>
-
+<div class ="btn-wrapper col-10 mx-auto">
 <h2>新着商品</h2>
  <% @items.each do |item| %>
  <table>
@@ -36,9 +36,13 @@
   <%= image_tag item.get_image(100,100) %>
   <% end %>
   </td>
+  </tr>
+  <tr>
   <td>
     <%= item.name %>
      </td>
+     </tr>
+     <tr>
      <td>
      <a>¥<%= item.price %></a>
       </td>
@@ -47,4 +51,10 @@
 </tbody>
 </table>
 <%= link_to "全ての商品を見る>", items_path %>
+</div>
+  </div>
+</div>
+</div>
+<%= yield %>
+</main>
 

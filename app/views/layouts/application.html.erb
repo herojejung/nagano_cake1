@@ -9,19 +9,17 @@
    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body data-turbolinks="false">
+    <div id="wrapper">
    <header>
-     <nav class="navbar navbar-expand-lg navbar-light">
-       <div class="container">
-         <a class="navbar-brand p-3">
+      <div class="container">
+       <nav class="nav navbar-nav navbar-left">
+         <a class="navbar-brand p-3"href="/">
           <%= image_tag('nagano_cake - MarkMaker Logo.png', :size =>'125x130') %>
          </a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
- <ul class="navbar-nav ml-auto">
+      </nav>
+    <nav>
+  <ul class="nav navbar-nav navbar-right wf-mplus1p">
 <% if customer_signed_in? %>
  <li class="nav-item">
   ようこそ、<% current_customer.first_name %>さん！
@@ -42,26 +40,20 @@
  </li>
 <% else %>
   <li class="nav-item">
-     <%= link_to "About",public_about_path,class: 'nav-link text-light'%>
-     </li>
-     <li class="nav-item">
-      <%= link_to "商品一覧",items_path,class: 'nav-link text-light' %>
-      </li>
-      <li class="nav-item">
-      <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-light' %>
-      </li>
-      <li class="nav-item">
-   <%= link_to "ログイン", new_customer_session_path,class: 'nav-link text-light' %>
-   </li>
+     <%= link_to "About",public_about_path,class: 'nav-link text-dark'%>
+      <%= link_to "商品一覧",items_path,class: 'nav-link text-dark' %>
+      <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-dark' %>
+   <%= link_to "ログイン", new_customer_session_path,class: 'nav-link text-dark' %>
+   <li><input name="search" placeholder="search　🔍"></li>
+   <% end %>
  </li>
-<% end %>
-</ul>
-  </div>
-    </div>
-      </nav>
-    </header>
-    <main class="mb-auto">
+ </ul>
+  </nav>
+ </div>
+</header>
+    <main id="content">
   <%= yield %>
   </main>
+  </div>
     </body>
 </html>
