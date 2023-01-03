@@ -1,9 +1,8 @@
 <main>
   <div class ="container">
     <div class ="row">
-      <div class ="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-<thead>
   <tbody>
+   <div class="col-sm">
    <a>ジャンル検索</a>
     <% @genres.each do |genre| %>
      <tr>
@@ -15,25 +14,30 @@
     </tr>
   <% end %>
  </tbody>
-</thead>
+ </div>
+  <div class="col-sm">
+   <div class="bg_top">
  <div class="card" style="max-width: 400px;">
-   <a class="card-img"><%= image_tag('25310211_s.jpg', :size =>'405x175') %></a>
-  <div class="card-img-overlay">
-    <p class="text-white">ようこそ、ながのCAKEへ！</br>
+   <a class="card-img"><%= image_tag('25310211_s.jpg', :size =>'605x235') %></a>
+  <div class="card-img-overlay" style = "margin_right: 30px;">
+    <p class="text-white" >ようこそ、ながのCAKEへ！</br>
     このサイトは、ケーキ販売のECサイトになります。</br>
     会員でない方も商品の閲覧はできますが、</br>
     購入には会員登録が必要です。
+    </p>
   </div>
 </div>
-<div class ="btn-wrapper col-10 mx-auto">
-<h2>新着商品</h2>
+</div>
+</div>
+<div class ="row">
+ <h2>新着商品</h2>
  <% @items.each do |item| %>
  <table>
 <tbody>
 <tr>
  <td>
  <%= link_to item_path(item) do %>
-  <%= image_tag item.get_image(100,100) %>
+  <%= image_tag item.get_image(150,150) %>
   <% end %>
   </td>
   </tr>
@@ -50,8 +54,13 @@
     <% end %>
 </tbody>
 </table>
-<%= link_to "全ての商品を見る>", items_path %>
 </div>
+
+<div class ="row">
+ <div class="col-xs-9"></div>
+  	  <div class="col-xs-2">
+<%= link_to "全ての商品を見る>", items_path %>
+  </div>
   </div>
 </div>
 </div>
