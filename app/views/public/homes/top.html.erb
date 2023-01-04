@@ -5,11 +5,13 @@
     <div class="d-flex align-items-center justify-content-center">
     <span class="border border-dark">
    <a>ジャンル検索</a>
+   <ul class = "flex">
     <% @genres.each do |genre| %>
-      <% if genre_id = true %>
-        <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
+      <li><% if genre_id = true %></li>
+       <li><%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %></li>
      <% end %>
   <% end %>
+  </ul>
   </span>
  </tbody>
  </div>

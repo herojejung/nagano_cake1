@@ -12,7 +12,6 @@
 <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
 <h3>お届け先</h3>
-<%= f.hidden_field :address_id, :value => @address.id %>
 <%= f.radio_button :select_address,0, {:checked => true} %>
 <%= f.label :ご自身の住所, class: "job_type_label" %>
 </br>
@@ -22,7 +21,6 @@
 </br>
 </br>
 
-<%= f.hidden_field :address_id, :value => @address.id %>
 <%= f.radio_button :select_address,1 %>
 <%= f.label :登録済住所から選択, class: "job_type_label" %>
 </br>
