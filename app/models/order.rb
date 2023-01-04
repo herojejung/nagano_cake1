@@ -11,5 +11,10 @@ class Order < ApplicationRecord
      "発送準備中":3,
      "発送済み":4
   }
-  
+
+  def subtotal
+    cart_item.with_tax_price * amount
+  end
+
+
 end

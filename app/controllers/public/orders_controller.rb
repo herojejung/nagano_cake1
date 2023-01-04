@@ -16,7 +16,10 @@ class Public::OrdersController < ApplicationController
     @cart_item = current_customer.cart_items
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @cart_items = current_customer.cart_items.all
+    @total = 0
+
+
   if params[:order][:select_address] == "0"
     @order.address  = current_customer.address
     @order.name  = current_customer.first_name+current_customer.last_name
@@ -49,5 +52,4 @@ class Public::OrdersController < ApplicationController
 def order_params
   params.require(:order).permit(:customer_id,:postal_code,:address,:name,:shipping_fee,:bill,:payment_method,:status)
 end
-
 end
