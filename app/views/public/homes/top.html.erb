@@ -1,30 +1,32 @@
 <main>
   <div class ="container">
     <div class ="row">
-  <tbody>
    <div class="col-sm">
+    <div class="d-flex align-items-center justify-content-center">
+    <span class="border border-dark">
    <a>ジャンル検索</a>
     <% @genres.each do |genre| %>
-     <tr>
       <% if genre_id = true %>
-       <td>
         <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
-      </td>                    <%# products_pathに引数としてcategory_idを渡す %>
      <% end %>
-    </tr>
   <% end %>
+  </span>
  </tbody>
+ </div>
  </div>
   <div class="col-sm">
    <div class="bg_top">
  <div class="card" style="max-width: 400px;">
    <a class="card-img"><%= image_tag('25310211_s.jpg', :size =>'605x235') %></a>
-  <div class="card-img-overlay" style = "margin_right: 30px;">
-    <p class="text-white" >ようこそ、ながのCAKEへ！</br>
+  <div class="card-img-overlay">
+ <div class="d-flex align-items-center justify-content-center" style= "padding-left: 130px;">
+  <h5 class>
+    ようこそ、ながのCAKEへ！</br>
     このサイトは、ケーキ販売のECサイトになります。</br>
     会員でない方も商品の閲覧はできますが、</br>
-    購入には会員登録が必要です。
-    </p>
+    購入には会員登録が必要です。</br>
+   </h5>
+    </div>
   </div>
 </div>
 </div>
@@ -55,14 +57,8 @@
 </tbody>
 </table>
 </div>
-
-<div class ="row">
- <div class="col-xs-9"></div>
-  	  <div class="col-xs-2">
-<%= link_to "全ての商品を見る>", items_path %>
+  <%= link_to "全ての商品を見る", items_path %>
   </div>
-  </div>
-</div>
 </div>
 <%= yield %>
 </main>
