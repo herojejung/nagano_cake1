@@ -27,23 +27,41 @@
           <td><% @total += cart_item.subtotal %></td>
       </tr>
       <tr>
-        <th>送料</th>
-         <td>800</td>
-          </tr>
-           <tr>
-            <td>商品合計</td>
-              <td><%= @total  %></td>  
-              </tr>
-              <tr>
-            <td>請求金額</td>
-            <td></td>
-          </tr>
   <% end %>
 </tbody>
 </table>
 </br>
-
-
-<td></td>
+      <tr>
+       <p>
+        <strong>送料</strong>
+         <td><%= @order.shipping_fee = 800 %></td>
+          </p>
+          </tr>
+           <tr>
+            <p>
+             <strong>商品合計</strong>
+              <td><%= @total  %></td>
+              </p>
+              </tr>
+              <tr>
+            <p>
+             <strong>請求金額</strong>
+            <td><%= @total += @order.shipping_fee %></td>
+            </p>
+          </tr>
 </br>
 </br>
+<tr>
+ <p>
+  <strong>支払方法 </strong>
+  <td><%= @order.payment_method %></td>
+ </p>
+</tr>
+<tr>
+  <p>
+   <strong>お届け先 </strong>
+ <td>〒<%= @order.postal_code %></td>
+ <td><%= @order.address %></td>
+ <td><%= @order.name %></td>
+ </p>
+</tr>

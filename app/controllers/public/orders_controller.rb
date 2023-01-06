@@ -16,7 +16,7 @@ class Public::OrdersController < ApplicationController
     @cart_item = current_customer.cart_items
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items.all
     @total = 0
 
 
@@ -27,8 +27,8 @@ class Public::OrdersController < ApplicationController
   elsif params[:order][:select_address] == "1"
     @address = Address.find(params[:order][:address_id])
     @order.address  = @address.address
-    @order.name  = @address.first_name+current_customer.last_name
     @order.postal_code  = @address.postal_code
+    @order.name  = @address.name
   elsif params[:order][:select_address] == "2"
     @order.address  = params[:order][:address]
     @order.name  = params[:order][:name]
