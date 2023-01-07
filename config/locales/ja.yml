@@ -1,13 +1,10 @@
-  ja:
-    enums:
-      item:
-        is_active:
-          is_order: "販売中"
-          is_stop: "販売停止中"
-  
-    ja:
-    enums:
-      order:
-        payment_method:
-          credit_card: "クレジットカード"
-          transfer: "銀行振込"
+ja:
+  enums:
+    item:
+      is_active:
+        is_order: "販売中"
+        is_stop: "販売停止中"
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"

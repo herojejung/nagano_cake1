@@ -46,8 +46,8 @@
               <tr>
             <p>
              <strong>請求金額</strong>
-             <td><% @bill= @total + @order.shipping_fee %></td>
-            <td><%= @bill %></td>
+             <td><% @order.bill= @total + @order.shipping_fee %></td>
+            <td><%= @order.bill %></td>
             </p>
           </tr>
 </br>
@@ -55,7 +55,7 @@
 <tr>
  <p>
   <strong>支払方法 </strong>
-  <td><%= @order.payment_method %></td>
+  <td><%= @order.payment_method_i18n%></td>
  </p>
 </tr>
 <tr>
@@ -63,6 +63,7 @@
    <strong>お届け先 </strong>
  <td>〒<%= @order.postal_code %></td>
  <td><%= @order.address %></td>
+ </br>
  <td><%= @order.name %></td>
  </p>
 </tr>

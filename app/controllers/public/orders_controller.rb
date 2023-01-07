@@ -4,26 +4,13 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
   end
 
-  def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-current_customer.cart_items.each do |cart_item| 
-  @order_item = OrderItem.new 
-  @order_item.item_id = cart_item.item_id #商品idを注文商品idに代入
-  @order_item.number_of_items = cart_item.number_of_items #商品の個数を注文商品の個数に代入
-  @order_item.items_tax_included_price = (cart_item.item.unit_price_without_tax*1.1).floor #消費税込みに計算して代入
-  @order_item.order_id =  @order.id #注文商品に注文idを紐付け
-  @order_item.save #注文商品を保存
-end #ループ終わり
-
   def confirm
     @cart_item = current_customer.cart_items
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items.all
     @total = 0
-    @bill = 0
+    @order.bill = 0
 
 
   if params[:order][:select_address] == "0"
@@ -42,6 +29,22 @@ end #ループ終わり
   else
     render :new
   end
+  end
+
+  def create
+    @order = Order.new(order_params)
+    @order.status = 0
+    @order.save
+current_customer.cart_items.each do |cart_item|
+  @order_details = OrderDetails.new
+  @order_details.order_id =  @order.id
+  @order_details.item_id = cart_item.item_id
+  @order_details.amount = cart_item.amount
+  @order_details.amount_billed = cart_item.item.with_tax_price
+  @order_details.making_status = 0
+  @order_details.save
+  end
+    redirect_to complete_path
   end
 
   def complete
