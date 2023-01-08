@@ -9,29 +9,32 @@
 <thead>
     <tr>
       <th>購入日時</th>
-      <th>購入者</th>
-      <th>注文個数</th>
-      <th>注文ステータス</th>
-    </tr>
+        <th>購入者</th>
+          <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>
   </thead>
 </span>
   <tbody>
- <% @orders.each do |order| %>
+   <% @orders.each do |order| %>
     <tr>
-      <td><%= order.created_at.strftime('%Y/%m/%d %T') %></td>
-      <td><%= order.name %></td>
-      <% @amount = 0 %>
-      <% order.order_details.each do |details| %>
-        <% @amount += details.amount %>
-      <% end %>
-      <td><%= @amount %></td>
-
-      <td><%= order.status %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      <td class="align-middle link">
+        <%= link_to admin_order_path(order) do %>
+          <%= order.created_at.strftime('%Y/%m/%d %T') %>
+            <% end %>
+              </td>
+                <td><%= order.name %></td>
+                  <% @amount = 0 %>
+                    <% order.order_details.each do |details| %>
+                  <% @amount += details.amount %>
+                <% end %>
+              <td><%= @amount %></td>
+            <td><%= order.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-    </div>
-      </div>
-        </div>
+</div>
+</div>
+</div>

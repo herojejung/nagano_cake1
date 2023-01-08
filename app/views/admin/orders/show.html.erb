@@ -1,2 +1,37 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class ="container">
+    <div class ="row">
+        <div class="col-sm" style= "padding-right: 500px;">
+            <div class ="d-flex align-items-center">
+         <h2>注文履歴詳細</h2>
+        <%= form_with model: @order, url: admin_order_path do |f| %>
+      <tr>
+  <table class = "table">
+<th>購入者</th>
+  <td class="align-middle link">
+    <%= link_to admin_customer_path do %>
+      <%= @order.customer.name %>
+        <% end %>
+          </td>
+            <th>注文日</th>
+              <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+                <th>配送先</th>
+                  <td><%= @order.address %></td>
+                    <th>配送先</th>
+                      <td><%= @order.address %></td>
+                        <th>支払方法</th>
+                          <td><%= @order.payment_method_i18n%></td>
+                        <th>注文ステータス</th>
+                      <td>
+                    <% if @order.発送準備中? || @order.発送済み?  %>
+                  <%= f.select :order_status,Order.order_statuses.keys %>
+                <% else %>
+              <%= f.select :order_status,Order.order_statuses.keys, {disabled: ["発送準備中","発送済み"]} %>
+            <% end %>
+          <%= f.submit "更新", class: "btn btn-success" %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+  </div>
+    </div>
