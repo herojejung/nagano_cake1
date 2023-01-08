@@ -24,7 +24,7 @@ end
 private
 
 def order_detail_params
-  params.require(:order_detail).permit(:making_status)
+  params.require(:order_detail).permit(:making_status,:id,:item_id,:order_id,:amount,:amount_billed,)
 end
 
 end
