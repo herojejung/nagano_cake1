@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
     @customer = current_customer
@@ -44,6 +46,7 @@ current_customer.cart_items.each do |cart_item|
   @order_details.making_status = 0
   @order_details.save
   end
+    current_customer.cart_items.destroy_all
     redirect_to complete_path
   end
 
@@ -51,6 +54,7 @@ current_customer.cart_items.each do |cart_item|
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show

@@ -8,10 +8,16 @@ class Order < ApplicationRecord
     (price * 1.1).floor
   end
 
+  enum status: {
+     payment_waiting: 0,
+     payment_confirmation: 1,
+     in_production: 2,
+     preparing_delivery: 3,
+     delivered: 4
+  }
 
   def subtotal
     cart_item.with_tax_price * amount
   end
-
 
 end
