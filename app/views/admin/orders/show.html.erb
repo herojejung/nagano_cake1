@@ -56,7 +56,7 @@
               <td><%= @amount %></td>
             <td><%= details.subtotal %>円</td>
           <td>
-          <%= form_with model: @order_detail, url: admin_order_detail_path, method: :patch, local: true do |f| %>
+          <%= form_with model: details, url: admin_order_detail_path(details), method: :patch, local: true do |f| %>
         <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]},class: "making_status" %>
       <%= f.submit "更新" , class: "btn btn-outline-success" %>
     <% end %>
@@ -69,7 +69,7 @@
         </div>
           </div>
             <div class = "row">
-              <div class="offset-sm-7 col-sm-3" style="padding-left: 20px;">
+              <div class="offset-sm-8 col-sm-2" style="padding-left: 20px;">
                 <table class="table">
                   <tr>
                     <th class="table" style="width:100%">商品合計</th>
