@@ -9,6 +9,8 @@ class OrderDetail < ApplicationRecord
      production_complete: 3,
   }
   
-  
+  def subtotal
+    item.with_tax_price * amount
+  end
 
 end
