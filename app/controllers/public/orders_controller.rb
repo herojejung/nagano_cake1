@@ -54,10 +54,12 @@ current_customer.cart_items.each do |cart_item|
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.all
+    @total = 0
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
