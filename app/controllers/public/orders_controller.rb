@@ -60,6 +60,7 @@ current_customer.cart_items.each do |cart_item|
 
   def show
     @order = Order.find(params[:id])
+    @total = 0
   end
 
   private
