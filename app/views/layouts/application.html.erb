@@ -1,54 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <meta charset="UTF-8">
-    <title>NaganoCake</title>
-    <%= csrf_meta_tags %>
+    <meta charset="UTF-8">
+     <title>NaganoCake</title>
+      <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+ <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 <body>
  <header>
   <div class="container">
-    <div class= "row">
-     <a class="navbar-brand p-3"href="/">
-    <%= image_tag('nagano_cake - MarkMaker Logo.png', :size =>'125x150') %>
-   </a>
-   <ul class = "flex">
-<% if customer_signed_in? %>
- <li class="nav-item">
-   ようこそ、<%= current_customer.first_name %>さん！
-     <%= link_to "マイページ", public_customers_path %>
+   <div class= "row">
+    <a class="navbar-brand p-3"href="/">
+     <%= image_tag('nagano_cake - MarkMaker Logo.png', :size =>'125x150') %>
+      </a>
+       <ul class = "flex">
+        <% if customer_signed_in? %>
+         <li class="nav-item" style= "list-style:none; padding: 30px 0px 30px 80px;">
+        <%= link_to "マイページ", public_customers_path %>
        <%= link_to "商品一覧",items_path %>
-       <%= link_to "カート",cart_items_path %>
-     <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-    <input name="search" placeholder="search　🔍">
-</li>
+      <%= link_to "カート",cart_items_path %>
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+   </li>
+<li class = "welcome" style= "list-style:none;">
+ ようこそ、<%= current_customer.first_name %>さん！
+  </li>
+   <a class = "search" style= "padding: 0px 300px;">
+  <input name="search" placeholder="search🔍">
+</a>
+
 <% elsif admin_signed_in? %>
-<li class="nav-item">
+ <li class="nav-item" style= "list-style:none; padding: 30px 0px 30px 80px;">
   <%= link_to "商品一覧", admin_items_path %>
     <%= link_to "会員一覧", admin_customer_index_path %>
      <%= link_to "注文履歴一覧", admin_root_path %>
     <%= link_to "ジャンル一覧", admin_genres_path %>
  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
 </li>
-<% else %>
-<li class="nav-item">
-  <%= link_to "About",public_about_path %>
-    <%= link_to "商品一覧",items_path %>
-    <%= link_to "新規登録", new_customer_registration_path %>
-   <%= link_to "ログイン", new_customer_session_path %>
-  <input name="search" placeholder="search　🔍">
-</li>
-   <% end %>
-   </ul>
+   <a class = "search" style= "padding: 0px 300px;">
+  <input name="search" placeholder="search🔍">
+</a>
+   <% else %>
+    <li class="nav-item" style= "list-style:none; padding: 30px 0px 30px 80px;">
+     <%= link_to "About",public_about_path %>
+      <%= link_to "商品一覧",items_path %>
+       <%= link_to "新規登録", new_customer_registration_path %>
+       <%= link_to "ログイン", new_customer_session_path %>
+     </li>
+   <a class = "search" style= "padding: 0px 300px;">
+  <input name="search" placeholder="search🔍">
+</a>
+<% end %>
+  </ul>
+   </div>
+    </header>
+     <main>
+      <%= yield %>
+     </main>
     </div>
-      </header>
-    <main>
-  <%= yield %>
- </main>
-</div>
-</body>
+   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

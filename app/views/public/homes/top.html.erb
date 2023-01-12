@@ -1,14 +1,15 @@
-<main>
   <div class ="container">
-    <div class ="row">
-   <div class="col-sm">
+    <div class ="row" style= "padding-top: 50px;">
+   <div class="col-sm-3">
     <div class="d-flex align-items-center justify-content-center">
     <span class="border border-dark">
    <a>ジャンル検索</a>
-   <ul class = "flex">
+   <ul class = "flex" style="vertical-align:left">
     <% @genres.each do |genre| %>
-      <li><% if genre_id = true %></li>
-       <li><%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %></li>
+      <li class = "genre" style= "list-style:none;">
+       <% if genre_id = true %>
+       <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
+     </li>
      <% end %>
   <% end %>
   </ul>
@@ -22,7 +23,7 @@
    <a class="card-img"><%= image_tag('25310211_s.jpg', :size =>'605x235') %></a>
   <div class="card-img-overlay">
  <div class="d-flex align-items-center justify-content-center" style= "padding-left: 130px;">
-  <h5 class>
+  <h5>
     ようこそ、ながのCAKEへ！</br>
     このサイトは、ケーキ販売のECサイトになります。</br>
     会員でない方も商品の閲覧はできますが、</br>
@@ -33,7 +34,7 @@
 </div>
 </div>
 </div>
-<div class ="row">
+<div class ="row" style="padding: 150px 0px 0px 150px;">
  <h2>新着商品</h2>
  <% @items.each do |item| %>
  <table>
@@ -58,10 +59,13 @@
     <% end %>
 </tbody>
 </table>
-</div>
-  <%= link_to "全ての商品を見る", items_path %>
+ </div>
   </div>
 </div>
+<div class = "all-items" style="padding-left :60%;">
+<%= link_to "全ての商品を見る", items_path %>
+</div>
+<main>
 <%= yield %>
 </main>
 

@@ -1,69 +1,71 @@
- <div class ="container">
-   <div class="row"><h2>注文履歴詳細</h2></div>
+<div class ="container">
+  <div class="row"><h2>注文履歴詳細</h2></div>
     <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6 px-6">
-    <span>注文情報</span>
-       <table class="table table-bordered">
+      <div class="col-sm-10 ">
+        <span>注文情報</span>
+       <table class="table table-bordered" style="width:40%">
       <tr>
-        <th class="table-active">注文日</th>
-          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-            </tr>
-             <tr>
-              <th class="table-active">配送先</th>
-                <td>〒<%= @order.postal_code %></br><%= @order.address%></br><%= @order.name%></td>
-                  </tr>
-                    <tr>
-                      <th class="table-active">支払方法</th>
-                    <td><%= @order.payment_method_i18n%></td>
-                  </tr>
-                <tr>
-              <th class="table-active">ステータス</th>
-            <td><%= @order.status_i18n %></td>
-      </tr>
-      </table>
-    </div>
-    <div class = "row">
-      <div class="col-sm-4 col-md-4 col-lg-4 px-4 offset-3">
-        <span>請求情報</span>
-      <table class="table table-bordered">
-        <tr>
-          <th class="table-active">商品合計</th>
-            <td><%= @order.bill - @order.shipping_fee  %></td>
-              </tr>
-                <tr>
-                  <th class="table-active">配送料</th>
-                    <td><%= @order.shipping_fee  %></td>
-                      </tr>
-                    <tr>
-                  <th cclass="table-active">請求金額合計</th>
-                <td><%= @order.bill %></td>
-              </tr>
+    <th class="table-active">注文日</th>
+  <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+</tr>
+  <tr>
+    <th class="table-active">配送先</th>
+      <td>〒<%= @order.postal_code %></br><%= @order.address%></br><%= @order.name%></td>
+        </tr>
+          <tr>
+            <th class="table-active">支払方法</th>
+              <td><%= @order.payment_method_i18n%></td>
+                </tr>
+                  <tr>
+                    <th class="table-active">ステータス</th>
+                      <td><%= @order.status_i18n %></td>
+                    </tr>
+                  </table>
+                  
+                </div>
+              <div class = "row">
+            <div class="col-sm-8 col-md-8">
+          <span>請求情報</span>
+        <table class="table table-bordered" style= "width: 50px;">
+      <tr>
+    <th class="table-active" style="width:40%">商品合計</th>
+  <td><%= @order.bill - @order.shipping_fee  %></td>
+</tr>
+  <tr>
+    <th class="table-active" style="width:40%">配送料</th>
+      <td><%= @order.shipping_fee  %></td>
+        </tr>
+          <tr>
+            <th cclass="table-active" style="width:40%">請求金額合計</th>
+              <td><%= @order.bill %></td>
+                </tr>
               </table>
             </div>
-            </div>
-          <div class = "row">
-              <div class="col-sm-6 col-md-6 col-lg-6 px-6">
-                <span>注文内容</span>
-               <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th class="table-active" style="width:60%">商品</th>
-            <th class="table-active" style="width:20%">単価（税込み）</th>
-            <th class="table-active" style="width:10%">個数</th>
-            <th class="table-active" style="width:10%">小計</th>
-          </tr>
-        </thead>
-        <tr>
-        <tbody>
-          <% @order.order_details.each do |details| %>
-            <td><%= details.item.name %></td>
-              <td><%= details.item.with_tax_price%></td>
-              <td><%= details.amount %></td>
-            <td><%= details.subtotal %>円</td>
+          </div>
+          
+        <div class = "row">
+      <div class="col-sm-2 col-md-2 col-lg-2 px-2">
+    <span>注文内容</span>
+  <table class="table table-bordered">
+<thead>
+  <tr>
+    <th class="table-active" style="width:60%">商品</th>
+      <th class="table-active" style="width:60%">単価（税込み）</th>
+        <th class="table-active" style="width:60%">個数</th>
+          <th class="table-active" style="width:60%">小計</th>
             </tr>
+        </thead>
+      <tr>
+    <tbody>
+  <% @order.order_details.each do |details| %>
+<td><%= details.item.name %></td>
+  <td><%= details.item.with_tax_price%></td>
+    <td><%= details.amount %></td>
+      <td><%= details.subtotal %>円</td>
+        </tr>
           <% end %>
         </tbody>
-</table>
-  </div>
+      </table>
     </div>
-        </div>
+  </div>
+</div>
