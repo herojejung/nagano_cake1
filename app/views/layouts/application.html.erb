@@ -11,14 +11,16 @@
 </head>
 <body>
  <header>
-  <div class="container">
-   <div class= "row">
+  <div class="d-flex bd-highlight">
+   <div class= "p-2 flex-grow-1 bd-highlight">
     <a class="navbar-brand p-3"href="/">
      <%= image_tag('nagano_cake - MarkMaker Logo.png', :size =>'125x150') %>
       </a>
+      </div>
+      <div class = "p-2 bd-highlight">
        <ul class = "flex">
         <% if customer_signed_in? %>
-         <li class="nav-item" style= "list-style:none; padding: 30px 0px 30px 80px;">
+         <li class="nav-item" style = "list-style: none;">
         <%= link_to "マイページ", public_customers_path %>
        <%= link_to "商品一覧",items_path %>
       <%= link_to "カート",cart_items_path %>
@@ -27,34 +29,33 @@
 <li class = "welcome" style= "list-style:none;">
  ようこそ、<%= current_customer.first_name %>さん！
   </li>
-   <a class = "search" style= "padding: 0px 300px;">
+   <li class = "search" style= "padding: 50px; list-style: none;">
   <input name="search" placeholder="search🔍">
-</a>
-
+</li>
 <% elsif admin_signed_in? %>
- <li class="nav-item" style= "list-style:none; padding: 30px 0px 30px 80px;">
+ <li class="nav-item" style = "list-style: none;">
   <%= link_to "商品一覧", admin_items_path %>
     <%= link_to "会員一覧", admin_customer_index_path %>
      <%= link_to "注文履歴一覧", admin_root_path %>
     <%= link_to "ジャンル一覧", admin_genres_path %>
  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
 </li>
-   <a class = "search" style= "padding: 0px 300px;">
+   <li class = "search" style= "padding: 50px; list-style: none;">
   <input name="search" placeholder="search🔍">
-</a>
+</li>
    <% else %>
-    <li class="nav-item" style= "list-style:none; padding: 30px 0px 30px 80px;">
+    <li class="nav-item" style = "list-style: none;">
      <%= link_to "About",public_about_path %>
       <%= link_to "商品一覧",items_path %>
        <%= link_to "新規登録", new_customer_registration_path %>
        <%= link_to "ログイン", new_customer_session_path %>
      </li>
-   <a class = "search" style= "padding: 0px 300px;">
+   <li class = "search" style= "padding: 50px; list-style: none;">
   <input name="search" placeholder="search🔍">
-</a>
+</li>
 <% end %>
   </ul>
-   </div>
+  </div>
     </header>
      <main>
       <%= yield %>
