@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 px-sm-2 offset-sm-3">
-      <h1>商品一覧画面</h1>
+      <h4>商品一覧</h4>
         </div>
          <div class="col-sm-0 px-sm-0 text-right mb-8">
         <%= link_to new_admin_item_path ,class: "btn btn-sm btn-success" do %>
@@ -38,11 +38,11 @@
     <%= item.genre.name %>
   </td>
 <td>
-  <% if item.show_status == is_active %>
-    <p class="text-success font-weight-bold">販売停止中</p>
+  <% if item.show_status == "販売中" %>
+    <p class="text-success font-weight-bold">販売中</p>
        <% else %>
-          <p class="text-danger font-weight-bold">販売中</p>
-             <% end %>
+         <p class="text-danger font-weight-bold">販売停止中</p>
+         <% end %>
           </td>
        </tr>
     </tbody>
