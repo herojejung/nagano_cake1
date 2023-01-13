@@ -1,27 +1,47 @@
-<h2>商品新規登録</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 offset-sm-3">
+    <h2>商品新規登録</h2>
+   </div>
+</div>
 <!-- form_with部分 -->
-<%= form_with model: @item, url: admin_items_path do |f| %>
- <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
-<h4>商品画像</h4>
-<%= f.file_field :image, accept: "image/*", class: "w-100" %>
-
-<h4>商品名</h4>
-  <%= f.text_field :name %>
-
-<h4>商品説明文</h4>
-  <%= f.text_area :introduction %>
-
-<h4>税込価格</h4>
-  <a><%= f.text_field :price %>円</a>
-
-<h4>販売ステータス</h4>
-<%= f.radio_button :is_active, true %>
-<%= f.label :is_active_is_order, "販売中" %>
-<%= f.radio_button :is_active, false %>
+<div class="row">
+  <div class="col-sm-6 px-sm-6 mx-auto mb-8">
+    <%= form_with model: @item, url: admin_items_path do |f| %>
+      <table>
+        <tr>
+          <th>商品画像</th>
+        <th><%= f.file_field :image, accept: "image/*", class: "w-100" %></th>
+      </tr>
+    <tr>
+  <th>商品名</th>
+<th><%= f.text_field :name %></th>
+  </tr>
+    <tr>
+      <th>商品説明文</th>
+        <th><%= f.text_area :introduction %></th>
+        </tr>
+      <tr>
+    <th>ジャンル</th>
+  <th><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></th>
+</tr>
+  <tr>
+    <th>税込価格</th>
+      <th><%= f.text_field :price %>円</th>
+        </tr>
+          <tr>
+          <th>販売ステータス</th>
+        <td>
+      <%= f.radio_button :is_active, true %>
+    <%= f.label :is_active_is_order, "販売中" %>
+  <%= f.radio_button :is_active, false %>
 <%= f.label :is_active_is_order, "販売停止中" %>
-
-<p>
-<%= f.submit '登録', class: "btn btn-success" %>
-</p>
-
-<% end %>
+  </td>
+    </tr>
+      <tr>
+        <th><%= f.submit '新規登録', class: "btn btn-success" %></th>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

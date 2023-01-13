@@ -58,3 +58,4 @@ gem 'devise'
 gem "enum_help"
 gem 'ransack'
 gem 'pry-rails'
+gem 'kaminari'
