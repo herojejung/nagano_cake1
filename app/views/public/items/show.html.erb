@@ -1,35 +1,39 @@
-<table class="table">
-    <thead>
-    <tbody>
-    <a>ジャンル検索</a>
-      <% @genres.each do |genre| %>
+<div class="container mt-7 mb-5">
+  <div class="row item-new">
+    <div class="col-sm-2 px-sm-0 offset-sm-1">
+    <div class= "border border-dark">
+  <table>
+<th>ジャンル検索</th>
+  <% @genres.each do |genre| %>
     <tr>
       <% if genre_id = true %>
-      <td>
-        <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
-      </td>                    <%# products_pathに引数としてcategory_idを渡す %>
+        <td><%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %></td>                    <%# products_pathに引数としてcategory_idを渡す %>
+          <% end %>
+        </tr>
       <% end %>
-    </tr>
-    <% end %>
+    </table>
+  </div>
+</div>
+<div class="col-xs-7 col-md-0 offset-sm-1 text-right">
+  <%= image_tag @item.get_image(200,200) %>
+    </div>
+  <div class="col-sm-4 px-sm-2 mx-auto">
+<table>
+  <tr>
+    <th><%= @item.name %></th>
+      </tr>
+        <tr>
+          <th><%= @item.introduction %></th>
+        </tr>
       <tr>
-        <td>
-          <%= image_tag @item.get_image(100,100) %>
-        </td>
-         <td>
-         <%= @item.name %>
-        </td>
-       <td>
-      <%= @item.introduction %>
-    </td>
-  <td>
-<a>¥<%= @item.price %>(税込)</a>
-</td>
-</tr>
-</tbody>
+    <th><strong>¥<%= @item.price %>(税込)</strong></th>
+  </tr>
 </table>
-
 <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.select :amount, *[1..20], {include_blank: '個数を選択'}, class: 'sample' %>
-   <%= f.submit 'カートに入れる', class: "btn btn-success" %>
-  <% end %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.select :amount, *[1..20], {include_blank: '個数を選択'}, class: 'sample' %>
+  <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+<% end %>
+</div>
+</div>
+</div>

@@ -1,37 +1,46 @@
-<h2>
-  <% if @genre.present? == true %>
-  <%= @genre.name%>一覧（全<%= @items.where('created_at > id').count %>件)
-  <% else %>
-  商品一覧（全<%= @items.where('created_at > id').count %>件)
-  <% end %>
-</h2>
-
-<table class="table table-hover table-inverse">
-<tbody>
-  <a>ジャンル検索</a>
+<div class="container mt-4 mb-3">
+  <div class="row item-new">
+    <div class="col-sm-2 px-sm-0 offset-sm-1">
+      <div class= "border border-dark">
+      <table>
+<th>ジャンル検索</th>
   <% @genres.each do |genre| %>
     <tr>
       <% if genre_id = true %>
-      <td>
-        <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
-      </td>                    <%# products_pathに引数としてcategory_idを渡す %>
+      <td><%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %></td>                    <%# products_pathに引数としてcategory_idを渡す %>
       <% end %>
     </tr>
-    <% end %>
+  <% end %>
+</table>
+</div>
+</div>
+<div class="row offset-1">
+<h2>
+  <% if @genre.present? == true %>
+    <%= @genre.name%>一覧（全<%= @items.where('created_at > id').count %>件)
+      <% else %>
+    商品一覧（全<%= @items.where('created_at > id').count %>件)
+  <% end %>
+</h2>
+</div>
+<div class="col-sm-9 px-sm-2 mx-auto">
  <% @items.each do |item| %>
-<tr>
+  <tr>
     <td>
-    <%= link_to item_path(item) do %>
+      <%= link_to item_path(item) do %>
       <%= image_tag item.get_image(100,100) %>
       <% end %>
     </td>
     <td>
       <%= item.name %>
-      </td>
-      <td>
+    </td>
+    <td>
       <a>¥<%= item.price %></a>
-      </td>
-      </tr>
-    <% end %>
+    </td>
+  </tr>
+<% end %>
 </tbody>
 </table>
+</div>
+</div>
+</div>

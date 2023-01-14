@@ -1,49 +1,49 @@
-<h2>注文情報入力画面</h2>
-
-
+<div class="container">
+  <div class="row my-4">
+    <div class="col-sm-9 px-sm-2 mx-auto">
+<h2>注文情報入力</h2>
+</br>
 <%= form_with model: @order, url: confirm_path do |f| %>
-
-<table>
 <h3>支払い方法</h3>
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) , {:checked => true} %>
 <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
-</br>
 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
 <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
-
+</br>
+</br>
 <h3>お届け先</h3>
 <%= f.radio_button :select_address,0, {:checked => true} %>
 <%= f.label :ご自身の住所, class: "job_type_label" %>
+<div class="ml-3"><%= "〒#{current_customer.postal_code} #{current_customer.address}"%></div>
+<div class="ml-3"><%= current_customer.last_name + current_customer.first_name  %></div>
 </br>
-〒<%= current_customer.postal_code%>
-<%= current_customer.address%>
-<%= current_customer.first_name%><%= current_customer.last_name%>
-</br>
-</br>
-
+<% if current_customer.addresses.empty? %>
+<% else %>
 <%= f.radio_button :select_address,1 %>
-<%= f.label :登録済住所から選択, class: "job_type_label" %>
+<%= f.label :登録済住所から選択, class: "job_type_label" %></br>
+<%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display),size:50%>
+<% end %>
 </br>
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display),size:50%>
 </br>
-</br>
-
 <%= f.radio_button :select_address,2 %>
 <%= f.label :新しいお届け先, class: "job_type_label" %>
-</br>
-<label for="inputPostal_Code">郵便番号</label>
-<%= f.text_field :postal_code, autofocus: true, id:"inputPostal_Code", placeholder:"00000000"%>
-</br>
-</br>
-<label for="inputAddress">住所</label>
-<%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"東京都渋谷区代々木神園町0-0",size:45%>
-</br>
-</br>
-<label for="inputName">宛名</label>
-<%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-<br/>
-</br>
-
-<%= f.submit '確認画面へ進む', class: "btn btn-success" %>
+<table class="ml-3">
+<tr>
+<th><label for="inputPostal_Code">郵便番号</label></th>
+<th><%= f.text_field :postal_code, autofocus: true, id:"inputPostal_Code", placeholder:"00000000"%></th>
+</tr>
+<tr>
+<th><label for="inputAddress">住所</label></th>
+<th><%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"東京都渋谷区代々木神園町0-0",size:45%></th>
+</tr>
+<tr>
+<th><label for="inputName">宛名</label></th>
+<th><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></th>
+</tr>
 </table>
+</br>
+<%= f.submit '確認画面へ進む', class: "btn btn-sm btn-primary" %>
 <% end %>
+</div>
+</div>
+</div>

@@ -4,6 +4,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
+    @addresses = current_customer.addresses.all
   end
 
   def confirm
@@ -38,13 +39,13 @@ class Public::OrdersController < ApplicationController
     @order.status = 0
     @order.save
 current_customer.cart_items.each do |cart_item|
-  @order_details = OrderDetails.new
-  @order_details.order_id =  @order.id
-  @order_details.item_id = cart_item.item_id
-  @order_details.amount = cart_item.amount
-  @order_details.amount_billed = cart_item.item.with_tax_price
-  @order_details.making_status = 0
-  @order_details.save
+  @order_detail = OrderDetail.new
+  @order_detail.order_id =  @order.id
+  @order_detail.item_id = cart_item.item_id
+  @order_detail.amount = cart_item.amount
+  @order_detail.amount_billed = cart_item.item.with_tax_price
+  @order_detail.making_status = 0
+  @order_detail.save
   end
     current_customer.cart_items.destroy_all
     redirect_to complete_path

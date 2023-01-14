@@ -1,49 +1,64 @@
-
-<h1>ショッピングカート</h1>
- <%= link_to 'カートを空にする', destroy_all_path,method: :delete %>
-
+<div class="container my-6">
+  <div class="row">
+    <div class="offset-1">
+  <h1 class="red-border">ショッピングカート</h1>
+</div>
+<div class="col-sm-3 offset-3">
+  <%= link_to 'カートを空にする', destroy_all_path,method: :delete,class: "btn btn-sm btn-danger" %>
+    </div>
+      </div>
+    <div class="row mt-5">
+  <div class="offset-1 col-9">
 <table class="table table-hover table-inverse">
   <thead>
-    <tr>
+    <tr class="red-border">
       <th>商品名</th>
-       <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th></th>
-        </tr>
-      </thead>
-    <tbody>
- <% @cart_items.each do |cart_item| %>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+<% @cart_items.each do |cart_item| %>
+ <tbody>
 　<tr>
     <td>
-    　<a><%= image_tag cart_item.item.get_image(50,50) %><%= cart_item.item.name %></a>
-    　</td>
-    　   <td>
-          <%= cart_item.item.with_tax_price %>
-        　 </td>
-            <td>
-              <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
-                <%= f.select :amount, *[1..20], {include_blank: true, selected: cart_item.amount}, class: 'sample' %>
-                  <%= f.submit '変更', class: "btn btn-success" %>
-                    <% end %>
-                  <%#= .select :amount, *[1..5], {include_blank: cart_item.amount}, class: 'sample' %>
-                </td>
-               <td>
-              <%= cart_item.subtotal %>
-            </td>
-            <td>
-          <%= link_to '削除する', cart_item_path(cart_item.id) ,method: :delete%>
-        </td>
-      <td><% @total += cart_item.subtotal %></td>
-      </tr>
+      <a><%= image_tag cart_item.item.get_image(50,50) %><%= cart_item.item.name %></a>
+      </td>
+    <td>
+  <%= cart_item.item.with_tax_price %>
+</td>
+  <td>
+    <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
+    <%= f.select :amount, *[1..20], {include_blank: true, selected: cart_item.amount}, class: 'sample' %>
+    <%= f.submit '変更', class: "btn btn-success" %>
+    <% end %>
+  </td>
+<td>
+  <%= cart_item.subtotal %>
+    </td>
+      <td>
+    <%= link_to '削除する', cart_item_path(cart_item.id) ,method: :delete, class: "btn btn-sm btn-danger"%>
+  </td>
+<td><% @total += cart_item.subtotal %></td>
+</tr>
   <% end %>
-</tbody>
-</table>
-</br>
+    </tbody>
+    </table>
+  </div>
+</div>
+  <div class="row my-2">
+    <div class="offset-8">
+      <h4 class= "table table-bordered border-black">合計金額<%= @total  %>円</h4>
+    </div>
+  </div>
+<div class="mb-4 offset-1 ">
+  <%= link_to '買い物を続ける', public_root_path, class: "btn btn-primary" %>
+    </div>
+      <% if @cart_items != [] %>
+    <div class="col-md-5 offset-4">
+  <%= link_to '情報入力に進む', new_order_path, class: "btn btn-success"  %>
+<%end%>
+</div>
+</div>
 
-<td><%= link_to '買い物を続ける', public_root_path %></td>
-<td>合計金額</td>
-<td><%= @total  %></td>
-</br>
-</br>
-<td><%= link_to '情報入力に進む', new_order_path %></td>
