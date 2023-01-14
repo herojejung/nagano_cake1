@@ -8,7 +8,8 @@ class Public::AddressesController < ApplicationController
   end
 
   def index
-    @addresses = Address.all
+    @customer = current_customer
+    @addresses = @customer.addresses
     @address = Address.new
   end
 
