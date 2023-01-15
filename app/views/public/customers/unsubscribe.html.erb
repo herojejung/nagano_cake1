@@ -1,8 +1,25 @@
+<div class="container my-4">
+  <div class="row">
+    <div class="offset-4">
 <h2>本当に退会しますか？</h2>
+    </div>
+  </div>
+   <div class="row my-5">
+    <div class="offset-4">
  <p>
    退会すると、会員情報や<br>
    これまでの購入履歴が閲覧できなくなります。<br>
    退会する場合は、「退会する」をクリックしてください。
  </p>
-  <%= link_to "退会しない", public_customers_path %>
-  <%= link_to "退会する", public_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-4 col-2">
+  <%= link_to "退会しない", public_customers_path, class: "btn btn-primary" %>
+     </div>
+      <div class="offset-0 col-5">
+  <%= link_to "退会する", public_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" },method: :patch, class: "btn btn-danger"%>
+ </div>
+  </div>
+</div>

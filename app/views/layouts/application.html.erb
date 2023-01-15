@@ -35,7 +35,7 @@
 <% elsif admin_signed_in? %>
  <li class="nav-item" style = "list-style: none;">
   <%= link_to "商品一覧", admin_items_path %>
-    <%= link_to "会員一覧", admin_customer_index_path %>
+    <%= link_to "会員一覧", admin_customers_path %>
      <%= link_to "注文履歴一覧", admin_root_path %>
     <%= link_to "ジャンル一覧", admin_genres_path %>
  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
