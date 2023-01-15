@@ -1,37 +1,48 @@
-<h1>会員情報編集</h1>
+<div class="container my-5">
+  <div class="row">
+    <div class="offset-2">
+      <h2 class="red-border px-5 pb-1">会員情報編集</h2>
+  </div>
+</div>
+<div class="row my-3">
+    <div class="offset-3 col-6">
 <%= form_with model: @customer, url: public_customers_path do |f| %>
   <label for="inputName">氏名</label>
-    <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"Name"%>
-    <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"Name"%>
+    <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"Name", class: "offset-1 col-4"%>
+    <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"Name", class: "col-4"%>
   <br/>
   <br/>
 
   <label for="inputName_Kana">フリガナ</label>
-      <%= f.text_field :last_name_kana, autofocus: true, id:"inputName_kana", placeholder:"Kana"%>
-      <%= f.text_field :first_name_kana, autofocus: true, id:"inputName_kana", placeholder:"Kana"%>
+      <%= f.text_field :last_name_kana, autofocus: true, id:"inputName_kana", placeholder:"Kana", class: "offset-1 col-4"%>
+      <%= f.text_field :first_name_kana, autofocus: true, id:"inputName_kana", placeholder:"Kana", class: "col-4"%>
   <br/>
   <br/>
 
   <label for="inputPostal_Code">郵便番号</label>
-    <%= f.text_field :postal_code, autofocus: true, id:"inputPostal_Code", placeholder:"postal_code"%>
+    <%= f.text_field :postal_code, autofocus: true, id:"inputPostal_Code", placeholder:"postal_code", class: "offset-1 col-8"%>
   <br/>
   <br/>
 
   <label for="inputAddress">住所</label>
-    <%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"address"%>
+    <%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"address", class: "offset-1 col-8"%>
   <br/>
   <br/>
 
   <label for="inputTelephone_number">電話番号</label>
-    <%= f.text_field :telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"telephone_number"%>
+    <%= f.text_field :telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"telephone_number", class: "offset-1 col-8"%>
   <br/>
   <br/>
 
-  <label for="inputEmail">メールアドレス</label>
-      <%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"email"%>
+  <label for="inputEmail px-3">メールアドレス</label>
+      <%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"email", class: "offset-1 col-8"%>
   <br/>
   <br/>
-
-  <%= f.submit '編集内容を保存', class: "btn btn-success" %>
-  <%= link_to "退会する",  public_unsubscribe_path %>
-  <% end %>
+<div class="row">
+  <%= f.submit '編集内容を保存する', class: "btn btn-success offset-1 mt-1" %>
+</div>
+<div class="col-3 mx-auto">
+  <%= link_to "退会する",  public_unsubscribe_path, class: "btn btn-danger mt-0" %>
+    <% end %>
+  </div>
+</div>
